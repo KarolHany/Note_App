@@ -41,187 +41,191 @@ class _LoginPageState extends State<LoginPage> {
                     topLeft: Radius.circular(40),
                     topRight: Radius.circular(40),
                   )),
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  const Center(
-                    child: Text(
-                      "Login",
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 0, 113, 206),
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 15,
                     ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(left: 40, right: 40, top: 40),
-                    child: TextFormField(
-                      controller: EmailController,
-                      validator: (value) {
-                        if (value!.length < 9 || !value.contains('@')) {
-                          return "Enter a Valid Email";
-                        } else {
-                          return null;
-                        }
-                      },
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      decoration: InputDecoration(
-                        labelText: 'Email address',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 40, right: 40),
-                    child: TextFormField(
-                      controller: PasswordController,
-                      onChanged: (value) {},
-                      validator: (value) {
-                        if (value!.length < 6) {
-                          return "Enter at least 6 characters for the password.";
-                        } else {
-                          return null;
-                        }
-                      },
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      decoration: InputDecoration(
-                        labelText: 'password',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const SizedBox(
-                        width: 50,
-                      ),
-                      const Text('Forget Password?'),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Builder(builder: (context) {
-                        return GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => ForgetPasswordPage()));
-                          },
-                          child: const Text(
-                            'Forget Password',
-                            style: TextStyle(
-                              color: Colors.red,
-                            ),
-                          ),
-                        );
-                      }),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 18,
-                  ),
-                  Builder(builder: (context) {
-                    return ElevatedButton(
-                      onPressed: () {
-                        if (FormKey.currentState!.validate()) {
-                          FirebaseAuthentication.signinWithEmailAndPassword(
-                              EmailController.text,
-                              PasswordController.text,
-                              context,
-                              HomePage());
-                        }
-                      },
+                    const Center(
                       child: Text(
                         "Login",
                         style: TextStyle(
-                          fontSize: 25,
-                        ),
+                            color: Color.fromARGB(255, 0, 113, 206),
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold),
                       ),
-                      style: ElevatedButton.styleFrom(
-                          minimumSize: const Size(300, 50),
-                          backgroundColor: const Color.fromARGB(255, 0, 113, 206),
-                          shape: RoundedRectangleBorder(
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 40, right: 40, top: 40),
+                      child: TextFormField(
+                        controller: EmailController,
+                        validator: (value) {
+                          if (value!.length < 9 || !value.contains('@')) {
+                            return "Enter a Valid Email";
+                          } else {
+                            return null;
+                          }
+                        },
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        decoration: InputDecoration(
+                          labelText: 'Email address',
+                          border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
-                          )),
-                    );
-                  }),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Divider(
-                          indent: 20,
-                          endIndent: 20,
-                          color: Colors.grey,
-                          thickness: 1,
-                        ),
-                      ),
-                      Text("SignUp With"),
-                      Expanded(
-                        child: Divider(
-                          indent: 20,
-                          endIndent: 20,
-                          color: Colors.grey,
-                          thickness: 1,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Logo(Logos.facebook_f),
-                      Logo(Logos.google),
-                      Logo(Logos.twitter),
-                      Logo(Logos.apple),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text('Dont have an Acount ?'),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Builder(builder: (context) {
-                        return GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(
-                                    builder: (context) => SignUpPage()));
-                          },
-                          child: const Text(
-                            'SignUp',
-                            style: TextStyle(
-                              color: Colors.red,
-                            ),
                           ),
-                        );
-                      }),
-                    ],
-                  ),
-                ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 40, right: 40),
+                      child: TextFormField(
+                        controller: PasswordController,
+                        onChanged: (value) {},
+                        validator: (value) {
+                          if (value!.length < 6) {
+                            return "Enter at least 6 characters for the password.";
+                          } else {
+                            return null;
+                          }
+                        },
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        decoration: InputDecoration(
+                          labelText: 'password',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const SizedBox(
+                          width: 50,
+                        ),
+                        const Text('Forget Password?'),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Builder(builder: (context) {
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) =>
+                                      ForgetPasswordPage()));
+                            },
+                            child: const Text(
+                              'Forget Password',
+                              style: TextStyle(
+                                color: Colors.red,
+                              ),
+                            ),
+                          );
+                        }),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 18,
+                    ),
+                    Builder(builder: (context) {
+                      return ElevatedButton(
+                        onPressed: () {
+                          if (FormKey.currentState!.validate()) {
+                            FirebaseAuthentication.signinWithEmailAndPassword(
+                                EmailController.text,
+                                PasswordController.text,
+                                context,
+                                HomePage());
+                          }
+                        },
+                        child: Text(
+                          "Login",
+                          style: TextStyle(
+                            fontSize: 25,
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(300, 50),
+                            backgroundColor:
+                                const Color.fromARGB(255, 0, 113, 206),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            )),
+                      );
+                    }),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: Divider(
+                            indent: 20,
+                            endIndent: 20,
+                            color: Colors.grey,
+                            thickness: 1,
+                          ),
+                        ),
+                        Text("SignUp With"),
+                        Expanded(
+                          child: Divider(
+                            indent: 20,
+                            endIndent: 20,
+                            color: Colors.grey,
+                            thickness: 1,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Logo(Logos.facebook_f),
+                        Logo(Logos.google),
+                        Logo(Logos.twitter),
+                        Logo(Logos.apple),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text('Dont have an Acount ?'),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Builder(builder: (context) {
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                      builder: (context) => SignUpPage()));
+                            },
+                            child: const Text(
+                              'SignUp',
+                              style: TextStyle(
+                                color: Colors.red,
+                              ),
+                            ),
+                          );
+                        }),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

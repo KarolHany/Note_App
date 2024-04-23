@@ -15,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-        Duration(seconds: 3),
+        Duration(seconds: 2),
         () => Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => WelcomePage())));
   }
@@ -32,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
       child: const Column(
         children: [
           Padding(
-            padding: EdgeInsets.all(60),
+            padding: EdgeInsets.only(top:80 , bottom: 30),
             child: Center(
               child: Text(
                 "Note App",

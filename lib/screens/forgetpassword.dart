@@ -36,66 +36,68 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                   topRight: Radius.circular(40),
                 ),
               ),
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const Center(
-                      child: Text(
-                    "Forget Password",
-                    style: TextStyle(
-                      color: Colors.blue,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 20,
                     ),
-                  )),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(30),
-                    child: TextFormField(
-                      controller: emailController,
-                      validator: (value) {
-                        if (value!.length < 9 || !value.contains('@')) {
-                          return "Enter a Valid Email";
-                        } else {
-                          return null;
-                        }
-                      },
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      decoration: InputDecoration(
-                          hintText: "Enter your gmail",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          )),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      if (Formkey.currentState!.validate()) {
-                        FirebaseAuthentication.changePassword(
-                            emailController.text.trim(), context);
-                      }
-                    },
-                    child: Text(
-                      "Send",
+                    const Center(
+                        child: Text(
+                      "Forget Password",
                       style: TextStyle(
-                        fontSize: 25,
+                        color: Colors.blue,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(30),
+                      child: TextFormField(
+                        controller: emailController,
+                        validator: (value) {
+                          if (value!.length < 9 || !value.contains('@')) {
+                            return "Enter a Valid Email";
+                          } else {
+                            return null;
+                          }
+                        },
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        decoration: InputDecoration(
+                            hintText: "Enter your gmail",
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            )),
                       ),
                     ),
-                    style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(300, 50),
-                        backgroundColor: const Color.fromARGB(255, 0, 113, 206),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        )),
-                  )
-                ],
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        if (Formkey.currentState!.validate()) {
+                          FirebaseAuthentication.changePassword(
+                              emailController.text.trim(), context);
+                        }
+                      },
+                      child: Text(
+                        "Send",
+                        style: TextStyle(
+                          fontSize: 25,
+                        ),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                          minimumSize: const Size(300, 50),
+                          backgroundColor: const Color.fromARGB(255, 0, 113, 206),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          )),
+                    )
+                  ],
+                ),
               ),
             ),
           ),

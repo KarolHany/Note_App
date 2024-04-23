@@ -38,157 +38,159 @@ class _SignUpPageState extends State<SignUpPage> {
                     topLeft: Radius.circular(40),
                     topRight: Radius.circular(40),
                   )),
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  const Center(
-                    child: Text(
-                      "Sign Up",
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 0, 113, 206),
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 15,
                     ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(left: 40, right: 40, top: 40),
-                    child: TextFormField(
-                      controller: EmailController,
-                      validator: (value) {
-                        if (value!.length < 9 || !value.contains('@')) {
-                          return "Enter a Valid Email";
-                        } else {
-                          return null;
-                        }
-                      },
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      decoration: InputDecoration(
-                        labelText: 'Email address',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 40, right: 40),
-                    child: TextFormField(
-                      controller: PasswordController,
-                      validator: (value) {
-                        if (value!.length < 6) {
-                          return "Enter at least 6 characters for the password.";
-                        } else {
-                          return null;
-                        }
-                      },
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      decoration: InputDecoration(
-                        labelText: 'password',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Builder(builder: (context) {
-                    return ElevatedButton(
-                      onPressed: () {
-                        if (formkey.currentState!.validate()) {
-                          FirebaseAuthentication.signupWithEmailAndPassword(
-                              EmailController.text,
-                              PasswordController.text,
-                              context,
-                              LoginPage());
-                        }
-                      },
+                    const Center(
                       child: Text(
-                        "SignUp",
+                        "Sign Up",
                         style: TextStyle(
-                          fontSize: 25,
-                        ),
+                            color: Color.fromARGB(255, 0, 113, 206),
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold),
                       ),
-                      style: ElevatedButton.styleFrom(
-                          minimumSize: const Size(300, 50),
-                          backgroundColor: const Color.fromARGB(255, 0, 113, 206),
-                          shape: RoundedRectangleBorder(
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 40, right: 40, top: 40),
+                      child: TextFormField(
+                        controller: EmailController,
+                        validator: (value) {
+                          if (value!.length < 9 || !value.contains('@')) {
+                            return "Enter a Valid Email";
+                          } else {
+                            return null;
+                          }
+                        },
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        decoration: InputDecoration(
+                          labelText: 'Email address',
+                          border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
-                          )),
-                    );
-                  }),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Divider(
-                          indent: 20,
-                          endIndent: 20,
-                          color: Colors.grey,
-                          thickness: 1,
-                        ),
-                      ),
-                      Text("Login With"),
-                      Expanded(
-                        child: Divider(
-                          indent: 20,
-                          endIndent: 20,
-                          color: Colors.grey,
-                          thickness: 1,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Logo(Logos.facebook_f),
-                      Logo(Logos.google),
-                      Logo(Logos.twitter),
-                      Logo(Logos.apple),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text('Already have an Acount ?'),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Builder(builder: (context) {
-                        return GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(
-                                    builder: (context) => LoginPage()));
-                          },
-                          child: const Text(
-                            'Login',
-                            style: TextStyle(
-                              color: Colors.red,
-                            ),
                           ),
-                        );
-                      }),
-                    ],
-                  ),
-                ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 40, right: 40),
+                      child: TextFormField(
+                        controller: PasswordController,
+                        validator: (value) {
+                          if (value!.length < 6) {
+                            return "Enter at least 6 characters for the password.";
+                          } else {
+                            return null;
+                          }
+                        },
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        decoration: InputDecoration(
+                          labelText: 'password',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Builder(builder: (context) {
+                      return ElevatedButton(
+                        onPressed: () {
+                          if (formkey.currentState!.validate()) {
+                            FirebaseAuthentication.signupWithEmailAndPassword(
+                                EmailController.text,
+                                PasswordController.text,
+                                context,
+                                LoginPage());
+                          }
+                        },
+                        child: Text(
+                          "SignUp",
+                          style: TextStyle(
+                            fontSize: 25,
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(300, 50),
+                            backgroundColor: const Color.fromARGB(255, 0, 113, 206),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            )),
+                      );
+                    }),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: Divider(
+                            indent: 20,
+                            endIndent: 20,
+                            color: Colors.grey,
+                            thickness: 1,
+                          ),
+                        ),
+                        Text("Login With"),
+                        Expanded(
+                          child: Divider(
+                            indent: 20,
+                            endIndent: 20,
+                            color: Colors.grey,
+                            thickness: 1,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Logo(Logos.facebook_f),
+                        Logo(Logos.google),
+                        Logo(Logos.twitter),
+                        Logo(Logos.apple),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text('Already have an Acount ?'),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Builder(builder: (context) {
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                      builder: (context) => LoginPage()));
+                            },
+                            child: const Text(
+                              'Login',
+                              style: TextStyle(
+                                color: Colors.red,
+                              ),
+                            ),
+                          );
+                        }),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
